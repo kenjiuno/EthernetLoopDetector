@@ -35,16 +35,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lDev = new System.Windows.Forms.Label();
             this.tlpOk = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tlpNg = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lTick = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpOk.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tlpNg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // t
@@ -135,7 +137,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 9);
+            this.label4.Location = new System.Drawing.Point(38, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 12);
             this.label4.TabIndex = 1;
@@ -145,7 +147,7 @@
             // 
             this.lDev.AutoSize = true;
             this.lDev.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lDev.Location = new System.Drawing.Point(67, 9);
+            this.lDev.Location = new System.Drawing.Point(93, 9);
             this.lDev.Name = "lDev";
             this.lDev.Size = new System.Drawing.Size(23, 12);
             this.lDev.TabIndex = 2;
@@ -165,6 +167,17 @@
             this.tlpOk.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpOk.Size = new System.Drawing.Size(318, 47);
             this.tlpOk.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::EthernetLoopDetector.Properties.Resources._109_AllAnnotations_Complete_32x32_72;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // label5
             // 
@@ -192,16 +205,6 @@
             this.tlpNg.TabIndex = 4;
             this.tlpNg.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(192, 12);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "ループの兆候が有り、危険な状態です。";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -213,22 +216,43 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
+            // label6
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::EthernetLoopDetector.Properties.Resources._109_AllAnnotations_Complete_32x32_72;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(41, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(192, 12);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "ループの兆候が有り、危険な状態です。";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 242);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Reset";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lTick
+            // 
+            this.lTick.AutoSize = true;
+            this.lTick.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.lTick.Location = new System.Drawing.Point(12, 9);
+            this.lTick.Name = "lTick";
+            this.lTick.Size = new System.Drawing.Size(11, 12);
+            this.lTick.TabIndex = 6;
+            this.lTick.Text = ".";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 277);
+            this.ClientSize = new System.Drawing.Size(297, 282);
+            this.Controls.Add(this.lTick);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tlpNg);
             this.Controls.Add(this.tlpOk);
             this.Controls.Add(this.lDev);
@@ -243,10 +267,10 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tlpOk.ResumeLayout(false);
             this.tlpOk.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tlpNg.ResumeLayout(false);
             this.tlpNg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +294,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpNg;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lTick;
     }
 }

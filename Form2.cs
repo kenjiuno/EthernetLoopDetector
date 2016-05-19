@@ -1,13 +1,11 @@
-﻿using PcapDotNet.Core;
-using PcapDotNet.Packets;
+﻿using SharpPcap;
+using SharpPcap.WinPcap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EthernetLoopDetector {
@@ -16,12 +14,13 @@ namespace EthernetLoopDetector {
             InitializeComponent();
         }
 
-        PacketCommunicator comm;
+        WinPcapDevice comm;
 
-        public void Run(PcapDotNet.Core.LivePacketDevice device) {
-            comm = device.Open(65536, PacketDeviceOpenAttributes.Promiscuous, 1000);
-            comm.SetFilter("ip");
-            comm.NonBlocking = true;
+        public void Run(WinPcapDevice device) {
+            comm = device;
+            device.Open(OpenFlags.Promiscuous, 1, null);
+            comm.Filter = ("ip");
+            comm.NonBlockingMode = true;
             lDev.Text = device.Description;
         }
 
@@ -32,15 +31,17 @@ namespace EthernetLoopDetector {
         private void Form2_FormClosed(object sender, FormClosedEventArgs e) {
             t.Stop();
 
-            comm.Dispose();
+            comm.StopCapture();
         }
+
+        int tick = 0;
 
         private void t_Tick(object sender, EventArgs e) {
             int n0 = numReceived;
             int n2 = numDupe;
 
-            Packet p;
-            while (comm.ReceivePacket(out p) == PacketCommunicatorReceiveResult.Ok) {
+            RawCapture p;
+            while (null != (p = comm.GetNextPacket())) {
                 PacketHandler(p);
             }
 
@@ -52,6 +53,9 @@ namespace EthernetLoopDetector {
             int d2 = numDupe - n2;
 
             DANGER = (d0 / 10 < d2);
+
+            lTick.Text = "－／｜＼"[tick & 3] + "";
+            tick++;
         }
 
         bool DANGER {
@@ -65,8 +69,8 @@ namespace EthernetLoopDetector {
 
         SortedDictionary<string, DateTime> hash2 = new SortedDictionary<string, DateTime>();
 
-        private void PacketHandler(Packet packet) {
-            String k = HUt.Hash(packet.Buffer);
+        private void PacketHandler(RawCapture packet) {
+            String k = HUt.Hash(packet.Data);
             if (hash2.ContainsKey(k)) {
                 numDupe++;
             }
@@ -80,6 +84,11 @@ namespace EthernetLoopDetector {
                 foreach (byte b in bin) s += b.ToString("x2");
                 return s;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            hash2.Clear();
+            numReceived = numDupe = 0;
         }
     }
 }

@@ -6,8 +6,8 @@
 ; there. 
 
 !define APP "EthernetLoopDetector"
-!define APV "0.1"
-!define VER "0_1"
+!define APV "0.3"
+!define VER "0_3"
 
 ;--------------------------------
 
