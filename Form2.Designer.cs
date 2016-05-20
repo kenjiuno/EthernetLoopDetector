@@ -28,10 +28,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.lNumReceived = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lNumDict = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lNumDupes = new System.Windows.Forms.Label();
+            this.lSpeed = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lDev = new System.Windows.Forms.Label();
             this.tlpOk = new System.Windows.Forms.TableLayoutPanel();
@@ -42,6 +40,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lTick = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lNumDup = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpOk.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,90 +57,78 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lNumReceived, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lNumDict, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lNumDupes, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 38);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lSpeed, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lNumDup, 1, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 57);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(207, 91);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(486, 112);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 9);
+            this.label1.Location = new System.Drawing.Point(73, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 12);
+            this.label1.Size = new System.Drawing.Size(161, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "受信パケット数：";
+            this.label1.Text = "ARP 受信パケット数：";
             // 
             // lNumReceived
             // 
             this.lNumReceived.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lNumReceived.AutoSize = true;
-            this.lNumReceived.Location = new System.Drawing.Point(193, 9);
+            this.lNumReceived.Location = new System.Drawing.Point(358, 9);
+            this.lNumReceived.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lNumReceived.Name = "lNumReceived";
-            this.lNumReceived.Size = new System.Drawing.Size(11, 12);
+            this.lNumReceived.Size = new System.Drawing.Size(17, 18);
             this.lNumReceived.TabIndex = 1;
             this.lNumReceived.Text = "0";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "蓄積数：";
-            // 
-            // lNumDict
-            // 
-            this.lNumDict.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lNumDict.AutoSize = true;
-            this.lNumDict.Location = new System.Drawing.Point(193, 39);
-            this.lNumDict.Name = "lNumDict";
-            this.lNumDict.Size = new System.Drawing.Size(11, 12);
-            this.lNumDict.TabIndex = 3;
-            this.lNumDict.Text = "0";
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 69);
+            this.label3.Location = new System.Drawing.Point(181, 46);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "重複数：";
+            this.label3.Size = new System.Drawing.Size(53, 18);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "速度：";
             // 
-            // lNumDupes
+            // lSpeed
             // 
-            this.lNumDupes.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lNumDupes.AutoSize = true;
-            this.lNumDupes.Location = new System.Drawing.Point(193, 69);
-            this.lNumDupes.Name = "lNumDupes";
-            this.lNumDupes.Size = new System.Drawing.Size(11, 12);
-            this.lNumDupes.TabIndex = 5;
-            this.lNumDupes.Text = "0";
+            this.lSpeed.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lSpeed.AutoSize = true;
+            this.lSpeed.Location = new System.Drawing.Point(358, 46);
+            this.lSpeed.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lSpeed.Name = "lSpeed";
+            this.lSpeed.Size = new System.Drawing.Size(17, 18);
+            this.lSpeed.TabIndex = 3;
+            this.lSpeed.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 9);
+            this.label4.Location = new System.Drawing.Point(63, 14);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 12);
+            this.label4.Size = new System.Drawing.Size(74, 18);
             this.label4.TabIndex = 1;
             this.label4.Text = "デバイス：";
             // 
@@ -147,9 +136,10 @@
             // 
             this.lDev.AutoSize = true;
             this.lDev.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lDev.Location = new System.Drawing.Point(93, 9);
+            this.lDev.Location = new System.Drawing.Point(155, 14);
+            this.lDev.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lDev.Name = "lDev";
-            this.lDev.Size = new System.Drawing.Size(23, 12);
+            this.lDev.Size = new System.Drawing.Size(35, 18);
             this.lDev.TabIndex = 2;
             this.lDev.Text = "...";
             // 
@@ -161,20 +151,22 @@
             this.tlpOk.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpOk.Controls.Add(this.pictureBox1, 0, 0);
             this.tlpOk.Controls.Add(this.label5, 1, 0);
-            this.tlpOk.Location = new System.Drawing.Point(12, 135);
+            this.tlpOk.Location = new System.Drawing.Point(20, 202);
+            this.tlpOk.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tlpOk.Name = "tlpOk";
             this.tlpOk.RowCount = 1;
             this.tlpOk.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpOk.Size = new System.Drawing.Size(318, 47);
+            this.tlpOk.Size = new System.Drawing.Size(530, 70);
             this.tlpOk.TabIndex = 3;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::EthernetLoopDetector.Properties.Resources._109_AllAnnotations_Complete_32x32_72;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(53, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -183,9 +175,10 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 17);
+            this.label5.Location = new System.Drawing.Point(68, 26);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(188, 12);
+            this.label5.Size = new System.Drawing.Size(283, 18);
             this.label5.TabIndex = 1;
             this.label5.Text = "ループの兆候はなく、大丈夫の様です。";
             // 
@@ -197,11 +190,12 @@
             this.tlpNg.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpNg.Controls.Add(this.pictureBox2, 0, 0);
             this.tlpNg.Controls.Add(this.label6, 1, 0);
-            this.tlpNg.Location = new System.Drawing.Point(12, 188);
+            this.tlpNg.Location = new System.Drawing.Point(20, 282);
+            this.tlpNg.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tlpNg.Name = "tlpNg";
             this.tlpNg.RowCount = 1;
             this.tlpNg.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpNg.Size = new System.Drawing.Size(318, 47);
+            this.tlpNg.Size = new System.Drawing.Size(530, 70);
             this.tlpNg.TabIndex = 4;
             this.tlpNg.Visible = false;
             // 
@@ -209,9 +203,10 @@
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = global::EthernetLoopDetector.Properties.Resources._109_AllAnnotations_Warning_32x32_72;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 7);
+            this.pictureBox2.Location = new System.Drawing.Point(5, 11);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(53, 48);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -220,17 +215,19 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 17);
+            this.label6.Location = new System.Drawing.Point(68, 26);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(192, 12);
+            this.label6.Size = new System.Drawing.Size(288, 18);
             this.label6.TabIndex = 1;
             this.label6.Text = "ループの兆候が有り、危険な状態です。";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 242);
+            this.button1.Location = new System.Drawing.Point(20, 363);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(125, 34);
             this.button1.TabIndex = 5;
             this.button1.Text = "Reset";
             this.button1.UseVisualStyleBackColor = true;
@@ -240,17 +237,51 @@
             // 
             this.lTick.AutoSize = true;
             this.lTick.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
-            this.lTick.Location = new System.Drawing.Point(12, 9);
+            this.lTick.Location = new System.Drawing.Point(20, 14);
+            this.lTick.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lTick.Name = "lTick";
-            this.lTick.Size = new System.Drawing.Size(11, 12);
+            this.lTick.Size = new System.Drawing.Size(17, 18);
             this.lTick.TabIndex = 6;
             this.lTick.Text = ".";
             // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(385, 46);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 18);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "パケット／秒";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 84);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(229, 18);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "ARP ユニーク数(直近 100 個)：";
+            // 
+            // lNumDup
+            // 
+            this.lNumDup.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lNumDup.AutoSize = true;
+            this.lNumDup.Location = new System.Drawing.Point(358, 84);
+            this.lNumDup.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lNumDup.Name = "lNumDup";
+            this.lNumDup.Size = new System.Drawing.Size(17, 18);
+            this.lNumDup.TabIndex = 6;
+            this.lNumDup.Text = "0";
+            // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 282);
+            this.ClientSize = new System.Drawing.Size(529, 423);
             this.Controls.Add(this.lTick);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tlpNg);
@@ -258,8 +289,9 @@
             this.Controls.Add(this.lDev);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Form2";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[Ethernet ループ検出] 監視中";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -282,10 +314,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lNumReceived;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lNumDict;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lNumDupes;
+        private System.Windows.Forms.Label lSpeed;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lDev;
         private System.Windows.Forms.TableLayoutPanel tlpOk;
@@ -296,5 +326,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lTick;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lNumDup;
     }
 }
