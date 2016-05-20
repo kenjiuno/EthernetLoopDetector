@@ -20,6 +20,6 @@ EthernetLoopDetectorは、WinPcapを使用し、ネットワークに存在し�
 
 ![ループの超硬はなく、大丈夫の様です](https://raw.githubusercontent.com/kenjiuno/EthernetLoopDetector/master/ss_ok.png)
 
-パケットキャプチャ画面。ループの可能性を検出する：
+パケットキャプチャ画面。ループの可能性を検出する。100 ARP/秒 以上の頻度でループ判断：
 
 ![ループの超硬が有り、危険な状態です](https://raw.githubusercontent.com/kenjiuno/EthernetLoopDetector/master/ss_loop.png)
