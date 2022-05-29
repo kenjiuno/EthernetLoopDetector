@@ -33,7 +33,7 @@ namespace EthernetLoopDetector {
 
         void b_Click(object sender, EventArgs e) {
             WinPcapDevice device = (WinPcapDevice)((Button)sender).Tag;
-            Form2 form = new Form2();
+            LoopDet2Form form = new LoopDet2Form();
             form.Run(device);
             form.Show(this);
         }
