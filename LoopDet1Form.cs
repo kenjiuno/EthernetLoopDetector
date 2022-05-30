@@ -1,5 +1,4 @@
 ﻿using SharpPcap;
-using SharpPcap.WinPcap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,27 +8,29 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EthernetLoopDetector {
-    public partial class LoopDet1Form : Form {
-        public LoopDet1Form() {
+namespace EthernetLoopDetector
+{
+    public partial class LoopDet1Form : Form
+    {
+        private readonly ILiveDevice comm;
+
+        public LoopDet1Form(ILiveDevice device)
+        {
             InitializeComponent();
-        }
 
-        WinPcapDevice comm;
-
-        public void Run(WinPcapDevice device) {
             comm = device;
-            device.Open(OpenFlags.Promiscuous, 1, null);
+            device.Open(DeviceModes.Promiscuous, 1);
             comm.Filter = ("arp");
-            comm.NonBlockingMode = true;
             lDev.Text = device.Description;
         }
 
-        private void Form2_Load(object sender, EventArgs e) {
+        private void Form2_Load(object sender, EventArgs e)
+        {
             t.Start();
         }
 
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e) {
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
             t.Stop();
 
             comm.StopCapture();
@@ -41,23 +42,34 @@ namespace EthernetLoopDetector {
 
         SortedDictionary<string, string> dDup = new SortedDictionary<string, string>();
 
-        private void t_Tick(object sender, EventArgs e) {
+        private void t_Tick(object sender, EventArgs e)
+        {
             int prevReceived = totalReceived;
 
-            RawCapture p;
-            while (null != (p = comm.GetNextPacket())) {
-                PacketHandler(p);
+            while (true)
+            {
+                var res = comm.GetNextPacket(out PacketCapture p);
+                if (res == GetPacketStatus.PacketRead)
+                {
+                    PacketHandler(p.GetPacket());
+                }
+                else
+                {
+                    break;
+                }
             }
 
             dDup.Clear();
-            for (int t = 0; t < nPackets; t++) {
+            for (int t = 0; t < nPackets; t++)
+            {
                 dDup[HUt.Hash(hash.ComputeHash(packets[(100 + iPacket - 1 - t) % 100]))] = null;
             }
             numDup = dDup.Count;
 
             var dtCur = DateTime.Now;
             int d0 = totalReceived - prevReceived;
-            if (dtPrev != DateTime.MinValue && dtPrev != dtCur) {
+            if (dtPrev != DateTime.MinValue && dtPrev != dtCur)
+            {
                 var nSpeed = (d0 / dtCur.Subtract(dtPrev).TotalSeconds);
                 lSpeed.Text = nSpeed.ToString("#,##0");
 
@@ -74,8 +86,10 @@ namespace EthernetLoopDetector {
             dtPrev = dtCur;
         }
 
-        bool DANGER {
-            set {
+        bool DANGER
+        {
+            set
+            {
                 tlpOk.Visible = !value;
                 tlpNg.Visible = value;
             }
@@ -86,7 +100,8 @@ namespace EthernetLoopDetector {
 
         MD5 hash = MD5.Create();
 
-        private void PacketHandler(RawCapture packet) {
+        private void PacketHandler(RawCapture packet)
+        {
             totalReceived++;
 
             packets[iPacket] = packet.Data;
@@ -101,15 +116,18 @@ namespace EthernetLoopDetector {
         int iPacket = 0;
         int nPackets = 0;
 
-        class HUt {
-            public static string Hash(byte[] bin) {
+        class HUt
+        {
+            public static string Hash(byte[] bin)
+            {
                 string s = "";
                 foreach (byte b in bin) s += b.ToString("x2");
                 return s;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void button1_Click(object sender, EventArgs e)
+        {
             totalReceived = 0;
         }
     }

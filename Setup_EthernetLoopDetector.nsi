@@ -55,6 +55,7 @@ Section "" ;No components page, name is not important
   ; Put file there
   File /r /x "*.vshost.*" "bin\x86\DEBUG\*.*"
   
-  Exec '"$INSTDIR\${APP}.exe"'
-  
+  CreateShortcut "$DESKTOP\Mode1 ${APP}.lnk" '"$INSTDIR\${APP}.exe"' 'det1'
+  CreateShortcut "$DESKTOP\Mode2 ${APP}.lnk" '"$INSTDIR\${APP}.exe"' 'det2'
+
 SectionEnd ; end the section

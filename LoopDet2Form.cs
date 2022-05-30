@@ -1,6 +1,5 @@
 ﻿using EthernetLoopDetector.Utils;
 using SharpPcap;
-using SharpPcap.WinPcap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,25 +13,23 @@ namespace EthernetLoopDetector
 {
     public partial class LoopDet2Form : Form
     {
-        public LoopDet2Form()
+        public LoopDet2Form(
+            ILiveDevice device
+        )
         {
             InitializeComponent();
-        }
 
-        private WinPcapDevice comm;
-        private PerUnitCounter cNumReceived = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
-        private PerUnitCounter cNumDict = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
-        private PerUnitCounter cNumDupes = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
-        private PerUnitCounter cNumBC = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
-
-        public void Run(WinPcapDevice device)
-        {
             comm = device;
-            device.Open(OpenFlags.Promiscuous, 1, null);
+            device.Open(DeviceModes.Promiscuous, 1);
             comm.Filter = ("ip");
-            comm.NonBlockingMode = true;
             lDev.Text = device.Description;
         }
+
+        private readonly ILiveDevice comm;
+        private readonly PerUnitCounter cNumReceived = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
+        private readonly PerUnitCounter cNumDict = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
+        private readonly PerUnitCounter cNumDupes = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
+        private readonly PerUnitCounter cNumBC = new PerUnitCounter(TimeSpan.FromSeconds(1.1));
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -53,10 +50,17 @@ namespace EthernetLoopDetector
             int n0 = numReceived;
             int n2 = numDupe;
 
-            RawCapture p;
-            while (null != (p = comm.GetNextPacket()))
+            while (true)
             {
-                PacketHandler(p);
+                var res = comm.GetNextPacket(out PacketCapture p);
+                if (res == GetPacketStatus.PacketRead)
+                {
+                    PacketHandler(p.GetPacket());
+                }
+                else
+                {
+                    break;
+                }
             }
 
             lNumReceived.Text = numReceived.ToString("#,##0");
